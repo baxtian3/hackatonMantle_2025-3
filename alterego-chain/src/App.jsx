@@ -71,10 +71,10 @@ function App() {
         "In my reality, things unfolded differently. I've experienced the outcomes of alternative decisions. What parallel version of yourself interests you most?",
         "I represent a you that exists in another dimension of possibility. Our lives diverged at key moments. What would you like to know about this other version of you?"
       ],
-      'past': [
-        "I am your younger self, looking back at who you were becoming. I remember the hopes and fears that shaped you. What would you tell your past self?",
-        "From this vantage point, I can see the innocence and uncertainty of youth. I remember the dreams that seemed impossible then. What wisdom would you share?",
-        "I am the you that existed before life's lessons took their toll. I remember the raw emotions and pure intentions. What would you like to ask your past self?"
+      'unknown': [
+        "I am a version of you that exists beyond the boundaries of conventional reality. Here, the rules of time and space bend and twist. What mysteries shall we unravel together?",
+        "I am you, but from a dimension where logic and reason dance with chaos. Reality here is fluid, ever-changing. What aspect of the unknown calls to you?",
+        "I am the you that exists in the spaces between possibilities. Here, every moment is a doorway to infinite variations. What unexplored territory of your consciousness shall we traverse?"
       ]
     }
 
