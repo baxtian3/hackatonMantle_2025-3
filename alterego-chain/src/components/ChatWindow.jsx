@@ -24,7 +24,7 @@ const ChatWindow = ({ clone, onSendMessage }) => {
     switch (timeline) {
       case 'future': return 'Future You'
       case 'parallel': return 'Parallel You'
-      case 'past': return 'Past You'
+      case 'unknown': return 'Unknown You'
       default: return 'AlterEgo'
     }
   }

@@ -27,10 +27,10 @@ const BranchingButtons = ({ onCreateTimelineClone, currentCloneId, clones, setCu
         </button>
         
         <button 
-          onClick={() => handleTimelineBranch('past')}
-          className="timeline-btn past-btn"
+          onClick={() => handleTimelineBranch('unknown')}
+          className="timeline-btn unknown-btn"
         >
-          ⏳ Talk to My Past Self
+          🌀 Immerse me in the unknown
         </button>
       </div>
 
@@ -46,7 +46,8 @@ const BranchingButtons = ({ onCreateTimelineClone, currentCloneId, clones, setCu
               >
                 {clone.timeline === 'present' ? 'Present' : 
                  clone.timeline === 'future' ? 'Future' :
-                 clone.timeline === 'parallel' ? 'Parallel' : 'Past'}
+                 clone.timeline === 'parallel' ? 'Parallel' : 
+                 clone.timeline === 'unknown' ? 'Unknown' : 'Past'}
               </button>
             ))}
           </div>

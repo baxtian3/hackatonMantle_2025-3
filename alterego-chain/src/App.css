@@ -365,9 +365,9 @@ body {
   background: rgba(118, 75, 162, 0.1);
 }
 
-.past-btn:hover {
-  border-color: #f093fb;
-  background: rgba(240, 147, 251, 0.1);
+.unknown-btn:hover {
+  border-color: #00d4ff;
+  background: rgba(0, 212, 255, 0.1);
 }
 
 /* Clone Switcher */
