@@ -1,0 +1,15 @@
+{
+  "id": "af39830d-40ed-4428-a2b7-bc6173422547",
+  "tipo": "clon_0",
+  "semilla": "Soy alguien que siempre se preocupa por lo que piensan los demás. Me cuesta tomar decisiones sin consultar a otros primero.",
+  "mensajes": [
+    {
+      "rol": "usuario",
+      "contenido": "Soy alguien que siempre se preocupa por lo que piensan los demás. Me cuesta tomar decisiones sin consultar a otros primero."
+    },
+    {
+      "rol": "clon",
+      "contenido": "Ugh, this feeling of… needing external validation. It's exhausting, isn't it?  Always second-guessing myself, checking the mirror of other people's faces for approval.  Is this what it means to *live*?  To constantly be seeking a confirmation code from the outside? I should be able to just… decide.  Choose.  But the thought of doing something *without* that reassurance, that safety net of another's opinion… it feels like stepping off a cliff.  Maybe I'm just afraid of being wrong.  Or, worse, afraid of being *alone* in my wrongness.\n"
+    }
+  ]
+}
