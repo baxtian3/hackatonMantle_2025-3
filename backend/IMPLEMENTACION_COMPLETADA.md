@@ -15,7 +15,7 @@
 - ✅ Respuesta con `id` y `respuesta_clon`
 
 ### ✅ Integración con Gemini AI
-- ✅ API Key configurada: `AIzaSyCqaVY_dzg_spCV2wlx3Hzfgwzt6NRH9NQ`
+- ✅ API Key configurada
 - ✅ Modelo `gemini-1.5-flash` funcionando correctamente
 - ✅ Prompt del sistema implementado según especificaciones
 - ✅ Interpolación de `[USER_SEED]` en el prompt

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
@@ -13,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 // Configurar Gemini AI
-const genAI = new GoogleGenerativeAI('AIzaSyCqaVY_dzg_spCV2wlx3Hzfgwzt6NRH9NQ');
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
 // Prompt del sistema para el clon 0
