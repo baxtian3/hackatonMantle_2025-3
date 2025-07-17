@@ -49,7 +49,7 @@ interface CloneContextType {
 const CloneContext = createContext<CloneContextType | undefined>(undefined)
 
 // Update API endpoints
-const API_BASE = "http://localhost:3001"
+const API_BASE = "http://hackatonmantle2025-3-production.up.railway.app"
 
 export function CloneProvider({ children }: { children: ReactNode }) {
   const [clones, setClones] = useState<Clone[]>([])
