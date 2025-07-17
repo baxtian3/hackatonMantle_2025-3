@@ -1,6 +1,4 @@
-# AlterEgo Chain Frontend
-
-A minimalist web application for creating and managing introspective clones of your consciousness, represented as an interactive graph of connected nodes.
+# AlterEgo Frontend
 
 ## 🚀 Installation and Setup
 
@@ -12,7 +10,7 @@ A minimalist web application for creating and managing introspective clones of y
 
 1. **Clone or download the project**
    ```bash
-   cd alterego-chain-frontend
+   cd frontend
    ```
 
 2. **Install dependencies**
@@ -26,19 +24,25 @@ A minimalist web application for creating and managing introspective clones of y
    ```
 
 4. **Open your browser**
-   - Go to `http://localhost:5173`
-   - The application should be running
+   - By default, the app will run on `http://localhost:3000`
+   - If you want to use another port (e.g. `5173`), create a `.env.local` file in the root with:
+     ```
+     PORT=5173
+     ```
+   - The application should be running now
+
+> ⚠️ **Note**: Although the project uses Vite-like syntax and structure, it is actually built with **Next.js**, which defaults to port `3000`.
 
 ### Available Scripts
 
 - `npm run dev` - Starts the development server
 - `npm run build` - Builds the application for production
-- `npm run preview` - Previews the production build
 - `npm run lint` - Runs the linter
+- `npm run start` - Starts the production server
 
 ## 🔧 Backend Configuration
 
-Ensure your AlterEgo Chain backend is running on `http://localhost:3001` before using the application.
+Ensure your backend is running on `http://localhost:3001` before using the application.
 
 The frontend expects the following endpoints:
 - `POST /create-clone0`
@@ -57,7 +61,7 @@ The frontend expects the following endpoints:
 ## 🛠️ Technologies
 
 - **React 18** with TypeScript
-- **Vite** as the bundler and development server
+- **Next.js** as the framework
 - **TailwindCSS** for styling
 - **react-force-graph-2d** for graph visualization
 - **Lucide React** for icons
@@ -91,7 +95,8 @@ src/
 ## 🐛 Troubleshooting
 
 - **Connection error**: Verify the backend is running on port 3001
-- **CORS issues**: Ensure the backend has CORS configured for localhost:5173
+- **CORS issues**: Ensure the backend has CORS configured for frontend's origin
+- **Wrong port in browser**: Remember Next.js runs on `3000` unless overridden
 - **Missing dependencies**: Run `npm install` again
 
 ## 📝 Development Notes
