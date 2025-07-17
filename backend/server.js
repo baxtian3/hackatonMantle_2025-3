@@ -10,9 +10,13 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+const cors = require('cors');
+
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://alterego-pi.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
 
 // Configure Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
