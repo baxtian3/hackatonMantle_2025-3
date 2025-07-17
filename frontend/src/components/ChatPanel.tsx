@@ -33,13 +33,13 @@ export default function ChatPanel() {
     setMessage("")
 
     try {
-      if (selectedClone.tipo === "clon_0") {
+      if (selectedClone.type === "clone_0") {
         await continueClone0(selectedClone.id, messageToSend)
       } else {
         await continueBifurcated(selectedClone.id, messageToSend)
       }
     } catch (err) {
-      setMessage(messageToSend) // Restaurar mensaje si hay error
+      setMessage(messageToSend) // Restore message if error
     }
   }
 
@@ -49,17 +49,17 @@ export default function ChatPanel() {
   }
 
   const getCloneTitle = () => {
-    if (selectedClone.tipo === "clon_0") {
-      return "Clon Original"
+    if (selectedClone.type === "clone_0") {
+      return "Original Clone"
     }
-    return `${selectedClone.tipo_bifurcacion}`
+    return `${selectedClone.fork_type}`
   }
 
   const getCloneColor = () => {
-    if (selectedClone.tipo === "clon_0") return "text-gray-800"
-    if (selectedClone.tipo_bifurcacion === "Futuro") return "text-emerald-600"
-    if (selectedClone.tipo_bifurcacion === "Universo paralelo") return "text-violet-600"
-    if (selectedClone.tipo_bifurcacion === "Desconocida") return "text-red-600"
+    if (selectedClone.type === "clone_0") return "text-gray-800"
+    if (selectedClone.fork_type === "Future") return "text-emerald-600"
+    if (selectedClone.fork_type === "Parallel universe") return "text-violet-600"
+    if (selectedClone.fork_type === "Unknown") return "text-red-600"
     return "text-gray-700"
   }
 
@@ -70,7 +70,7 @@ export default function ChatPanel() {
         <div>
           <h2 className={`font-medium ${getCloneColor()}`}>{getCloneTitle()}</h2>
           <p className="text-xs text-gray-500">
-            {selectedClone.mensajes.length} {selectedClone.mensajes.length === 1 ? "mensaje" : "mensajes"}
+            {selectedClone.messages.length} {selectedClone.messages.length === 1 ? "message" : "messages"}
           </p>
         </div>
         <Button
@@ -85,15 +85,15 @@ export default function ChatPanel() {
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {selectedClone.mensajes.map((msg, index) => (
-          <div key={index} className={`flex ${msg.rol === "usuario" ? "justify-end" : "justify-start"}`}>
+        {selectedClone.messages.map((msg, index) => (
+          <div key={index} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             <div
               className={`max-w-[80%] p-3 rounded-lg ${
-                msg.rol === "usuario" ? "bg-gray-100 text-gray-900" : "bg-gray-50 text-gray-800 border border-gray-200"
+                msg.role === "user" ? "bg-gray-100 text-gray-900" : "bg-gray-50 text-gray-800 border border-gray-200"
               }`}
             >
-              <div className="text-xs text-gray-500 mb-1">{msg.rol === "usuario" ? "Tú" : getCloneTitle()}</div>
-              <div className="text-sm whitespace-pre-wrap">{msg.contenido}</div>
+              <div className="text-xs text-gray-500 mb-1">{msg.role === "user" ? "You" : getCloneTitle()}</div>
+              <div className="text-sm whitespace-pre-wrap">{msg.content}</div>
             </div>
           </div>
         ))}
@@ -102,7 +102,7 @@ export default function ChatPanel() {
             <div className="bg-gray-50 border border-gray-200 p-3 rounded-lg">
               <div className="flex items-center space-x-2">
                 <Loader2 className="h-4 w-4 animate-spin text-gray-500" />
-                <span className="text-sm text-gray-500">Pensando...</span>
+                <span className="text-sm text-gray-500">Thinking...</span>
               </div>
             </div>
           </div>
@@ -120,38 +120,38 @@ export default function ChatPanel() {
       {/* Fork Options */}
       {showForkOptions && (
         <div className="p-4 border-t border-gray-200 bg-gray-50">
-          <p className="text-sm text-gray-700 mb-3">Bifurcar hacia:</p>
+          <p className="text-sm text-gray-700 mb-3">Fork towards:</p>
           <div className="space-y-2">
             <Button
-              onClick={() => handleFork("Futuro")}
+              onClick={() => handleFork("Future")}
               variant="outline"
               size="sm"
               className="w-full justify-start text-emerald-600 border-emerald-200 hover:bg-emerald-50"
               disabled={isLoading}
             >
-              Futuro - Versión más madura
+              Future - More mature version
             </Button>
             <Button
-              onClick={() => handleFork("Universo paralelo")}
+              onClick={() => handleFork("Parallel universe")}
               variant="outline"
               size="sm"
               className="w-full justify-start text-violet-600 border-violet-200 hover:bg-violet-50"
               disabled={isLoading}
             >
-              Universo paralelo - Decisiones distintas
+              Parallel universe - Different decisions
             </Button>
             <Button
-              onClick={() => handleFork("Desconocida")}
+              onClick={() => handleFork("Unknown")}
               variant="outline"
               size="sm"
               className="w-full justify-start text-red-600 border-red-200 hover:bg-red-50"
               disabled={isLoading}
             >
-              Desconocida - Realidad abstracta
+              Unknown - Abstract reality
             </Button>
           </div>
           <Button onClick={() => setShowForkOptions(false)} variant="ghost" size="sm" className="w-full mt-2">
-            Cancelar
+            Cancel
           </Button>
         </div>
       )}
@@ -167,7 +167,7 @@ export default function ChatPanel() {
             disabled={isLoading}
           >
             <GitBranch className="h-4 w-4 mr-1" />
-            Bifurcar
+            Fork
           </Button>
         </div>
 
@@ -175,7 +175,7 @@ export default function ChatPanel() {
           <Textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Escribe tu mensaje..."
+            placeholder="Write your message..."
             className="flex-1 min-h-[40px] max-h-[120px] resize-none border-gray-200 focus:border-gray-400 focus:ring-0"
             disabled={isLoading}
             onKeyDown={(e) => {

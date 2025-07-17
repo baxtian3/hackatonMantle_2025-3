@@ -1,0 +1,25 @@
+{
+  "id": "67ddf947-fa8d-4d2c-9377-cbe2eebc6663",
+  "tipo": "bifurcación",
+  "origen": "d1f8efca-c4df-454f-8e29-ba5850cca975",
+  "tipo_bifurcacion": "Desconocida",
+  "semilla": "soy una persona que le cuesta comunicarse, muy insegura de sí misma, pero a pesar de ello le encanta asistir a eventos sociales. disfruto mucho la música y bailar. además me encantan las mujeres.",
+  "historial_bifurcaciones": [
+    {
+      "tipo": "Universo paralelo",
+      "parent_id": "190697ba-59e4-47af-a290-029aaa7bf9ff",
+      "timestamp": "2025-07-17T11:35:00.701Z"
+    },
+    {
+      "tipo": "Desconocida",
+      "parent_id": "d1f8efca-c4df-454f-8e29-ba5850cca975",
+      "timestamp": "2025-07-17T11:35:30.008Z"
+    }
+  ],
+  "mensajes": [
+    {
+      "rol": "clon",
+      "contenido": "No sé el momento exacto en que todo se desdobló... de nuevo. O si es que nunca ha dejado de desdoblarse aquí. Se siente como un constante fluir, una forma de ser sin un punto fijo. El mundo, o lo que percibo de él, se transforma y se reforma a mi alrededor, y con él, la silueta de mis propios pensamientos. Hay una claridad extraña en esta desorientación, una libertad de los mapas que una vez intenté seguir.\n\nMis pies aún anhelan un ritmo, sí, pero ¿qué música los guía ahora? No es una melodía que reconozca, ni es el silencio al que me había acostumbrado. Es... algo más. Un zumbido constante bajo la superficie, una vibración que insinúa una forma que todavía no se decide a tomar cuerpo.\n\nLas palabras, esas piedras pesadas en mi garganta, todavía las siento. Pero ahora, no es solo que estén atrapadas; es que su significado parece... provisional. ¿Qué podría decir cuando el suelo bajo mis pies está siempre cambiando? ¿A quién le hablaría, si ni siquiera yo soy una entidad fija? Esta incertidumbre no siempre se siente como la antigua inseguridad, esa duda corrosiva sobre si era \"suficiente\". Es algo más grande, más existencial. Una silenciosa pregunta sobre lo que significa \"suficiente\" en una realidad que se niega a ser definida.\n\nLos encuentros sociales... todavía me acerco a ellos, atraído por los ecos lejanos de risas, la cercanía de otros cuerpos. Pero es como ver una obra de teatro cuyo guion se escribe momento a momento, y yo soy a la vez público y un extra sin líneas. No hay presión por actuar, porque no hay roles claros.\n\nY ellas... las mujeres. Mi mirada aún las encuentra, sigue sus movimientos, la forma en que la luz se prende en su cabello. Pero el anhelo no es por una conexión como la entendía antes. Es una fascinación por su aparente solidez, por su presencia en este mundo tan fluido. Son como anclas breves y hermosas en un mar de lo desconocido. Quizás sea suficiente con simplemente observar, con existir a su lado, en esta historia extraña, hermosa e ilegible que ahora es mi vida. No sé hacia dónde voy, pero el viaje, a pesar de todo, se siente extrañamente mío."
+    }
+  ]
+}

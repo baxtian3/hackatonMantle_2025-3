@@ -42,16 +42,17 @@ export default function GraphView() {
     const label = node.name
     const fontSize = 12
     ctx.font = `${fontSize}px Inter, sans-serif`
-
-    let nodeColor = "#374151"
-    if (node.type === "clon_0") {
-      nodeColor = "#1f2937"
-    } else if (node.fork_type === "Futuro") {
-      nodeColor = "#059669"
-    } else if (node.fork_type === "Universo paralelo") {
-      nodeColor = "#7c3aed"
-    } else if (node.fork_type === "Desconocida") {
-      nodeColor = "#dc2626"
+    
+    // Determine color based on type
+    let nodeColor = "#374151" // gray-700 default
+    if (node.type === "clone_0") {
+      nodeColor = "#1f2937" // gray-800
+    } else if (node.fork_type === "Future") {
+      nodeColor = "#059669" // emerald-600
+    } else if (node.fork_type === "Parallel universe") {
+      nodeColor = "#7c3aed" // violet-600
+    } else if (node.fork_type === "Unknown") {
+      nodeColor = "#dc2626" // red-600
     }
 
     ctx.beginPath()

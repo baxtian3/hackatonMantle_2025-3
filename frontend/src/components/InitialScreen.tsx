@@ -23,19 +23,19 @@ export default function InitialScreen() {
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <h1 className="text-4xl font-light text-gray-900 mb-2">AlterEgo Chain</h1>
-          <p className="text-gray-600 text-sm">Crea clones introspectivos de tu conciencia</p>
+          <p className="text-gray-600 text-sm">Create introspective clones of your consciousness</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="userSeed" className="block text-sm font-medium text-gray-700 mb-2">
-              Descríbete a ti mismo
+              Describe yourself
             </label>
             <Textarea
               id="userSeed"
               value={userSeed}
               onChange={(e) => setUserSeed(e.target.value)}
-              placeholder="Soy una persona que..."
+              placeholder="I am a person who..."
               className="min-h-[120px] resize-none border-gray-200 focus:border-gray-400 focus:ring-0"
               disabled={isLoading}
             />
@@ -51,10 +51,10 @@ export default function InitialScreen() {
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Creando Clon 0...
+                Creating Clone 0...
               </>
             ) : (
-              "Crear Clon 0"
+              "Create Clone 0"
             )}
           </Button>
         </form>

@@ -2,18 +2,19 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react"
 
+// Update the interfaces to match the new English backend structure
 export interface CloneMessage {
-  rol: "usuario" | "clon"
-  contenido: string
+  role: "user" | "clone"
+  content: string
 }
 
 export interface Clone {
   id: string
-  tipo: "clon_0" | "bifurcación"
-  semilla?: string
-  origen?: string
-  tipo_bifurcacion?: "Futuro" | "Universo paralelo" | "Desconocida"
-  mensajes: CloneMessage[]
+  type: "clone_0" | "fork"
+  seed?: string
+  origin?: string
+  fork_type?: "Future" | "Parallel universe" | "Unknown"
+  messages: CloneMessage[]
   x?: number
   y?: number
 }
@@ -21,7 +22,7 @@ export interface Clone {
 export interface GraphNode {
   id: string
   name: string
-  type: "clon_0" | "bifurcación"
+  type: "clone_0" | "bifurcación"
   fork_type?: string
   clone: Clone
 }
@@ -47,6 +48,7 @@ interface CloneContextType {
 
 const CloneContext = createContext<CloneContextType | undefined>(undefined)
 
+// Update API endpoints
 const API_BASE = "http://localhost:3001"
 
 export function CloneProvider({ children }: { children: ReactNode }) {
@@ -55,19 +57,20 @@ export function CloneProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  // Update the updateGraphData function
   const updateGraphData = (clonesData: Clone[]) => {
     const nodes: GraphNode[] = clonesData.map((clone) => ({
       id: clone.id,
-      name: clone.tipo === "clon_0" ? "Clon Original" : `${clone.tipo_bifurcacion}`,
-      type: clone.tipo,
-      fork_type: clone.tipo_bifurcacion,
+      name: clone.type === "clone_0" ? "Original Clone" : `${clone.fork_type}`,
+      type: clone.type,
+      fork_type: clone.fork_type,
       clone,
     }))
 
     const links: GraphLink[] = clonesData
-      .filter((clone) => clone.origen)
+      .filter((clone) => clone.origin)
       .map((clone) => ({
-        source: clone.origen!,
+        source: clone.origin!,
         target: clone.id,
       }))
 
@@ -76,46 +79,48 @@ export function CloneProvider({ children }: { children: ReactNode }) {
 
   const graphData = updateGraphData(clones)
 
+  // Update the createClone0 function
   const createClone0 = async (userSeed: string) => {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch(`${API_BASE}/crear-clon0`, {
+      const response = await fetch(`${API_BASE}/create-clone0`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_seed: userSeed }),
       })
 
-      if (!response.ok) throw new Error("Error al crear el clon")
+      if (!response.ok) throw new Error("Error creating clone")
 
       const data = await response.json()
       const newClone: Clone = {
         id: data.id,
-        tipo: "clon_0",
-        semilla: userSeed,
-        mensajes: [{ rol: "clon", contenido: data.respuesta_clon }],
+        type: "clone_0",
+        seed: userSeed,
+        messages: [{ role: "clone", content: data.clone_response }],
       }
 
       setClones([newClone])
       setSelectedClone(newClone)
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Error desconocido")
+      setError(err instanceof Error ? err.message : "Unknown error")
     } finally {
       setIsLoading(false)
     }
   }
 
+  // Update the continueClone0 function
   const continueClone0 = async (id: string, message: string) => {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch(`${API_BASE}/continuar-clon0`, {
+      const response = await fetch(`${API_BASE}/continue-clone0`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, mensaje_usuario: message }),
+        body: JSON.stringify({ id, user_message: message }),
       })
 
-      if (!response.ok) throw new Error("Error al continuar conversación")
+      if (!response.ok) throw new Error("Error continuing conversation")
 
       const data = await response.json()
 
@@ -124,10 +129,10 @@ export function CloneProvider({ children }: { children: ReactNode }) {
           clone.id === id
             ? {
                 ...clone,
-                mensajes: [
-                  ...clone.mensajes,
-                  { rol: "usuario", contenido: message },
-                  { rol: "clon", contenido: data.respuesta_clon },
+                messages: [
+                  ...clone.messages,
+                  { role: "user", content: message },
+                  { role: "clone", content: data.clone_response },
                 ],
               }
             : clone,
@@ -139,66 +144,68 @@ export function CloneProvider({ children }: { children: ReactNode }) {
           prev
             ? {
                 ...prev,
-                mensajes: [
-                  ...prev.mensajes,
-                  { rol: "usuario", contenido: message },
-                  { rol: "clon", contenido: data.respuesta_clon },
+                messages: [
+                  ...prev.messages,
+                  { role: "user", content: message },
+                  { role: "clone", content: data.clone_response },
                 ],
               }
             : null,
         )
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Error desconocido")
+      setError(err instanceof Error ? err.message : "Unknown error")
     } finally {
       setIsLoading(false)
     }
   }
 
+  // Update the forkClone function
   const forkClone = async (parentId: string, forkType: string) => {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch(`${API_BASE}/bifurcar`, {
+      const response = await fetch(`${API_BASE}/fork`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ parent_id: parentId, fork_type: forkType }),
       })
 
-      if (!response.ok) throw new Error("Error al bifurcar clon")
+      if (!response.ok) throw new Error("Error forking clone")
 
       const data = await response.json()
       const parentClone = clones.find((c) => c.id === parentId)
 
       const newClone: Clone = {
         id: data.id,
-        tipo: "bifurcación",
-        origen: parentId,
-        tipo_bifurcacion: data.tipo_bifurcacion as "Futuro" | "Universo paralelo" | "Desconocida",
-        semilla: parentClone?.semilla,
-        mensajes: [{ rol: "clon", contenido: data.respuesta_clon }],
+        type: "fork",
+        origin: parentId,
+        fork_type: data.fork_type as "Future" | "Parallel universe" | "Unknown",
+        seed: parentClone?.seed,
+        messages: [{ role: "clone", content: data.clone_response }],
       }
 
       setClones((prev) => [...prev, newClone])
       setSelectedClone(newClone)
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Error desconocido")
+      setError(err instanceof Error ? err.message : "Unknown error")
     } finally {
       setIsLoading(false)
     }
   }
 
+  // Update the continueBifurcated function
   const continueBifurcated = async (id: string, message: string) => {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch(`${API_BASE}/continuar-bifurcado`, {
+      const response = await fetch(`${API_BASE}/continue-fork`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, mensaje_usuario: message }),
+        body: JSON.stringify({ id, user_message: message }),
       })
 
-      if (!response.ok) throw new Error("Error al continuar conversación bifurcada")
+      if (!response.ok) throw new Error("Error continuing forked conversation")
 
       const data = await response.json()
 
@@ -207,10 +214,10 @@ export function CloneProvider({ children }: { children: ReactNode }) {
           clone.id === id
             ? {
                 ...clone,
-                mensajes: [
-                  ...clone.mensajes,
-                  { rol: "usuario", contenido: message },
-                  { rol: "clon", contenido: data.respuesta_clon },
+                messages: [
+                  ...clone.messages,
+                  { role: "user", content: message },
+                  { role: "clone", content: data.clone_response },
                 ],
               }
             : clone,
@@ -222,17 +229,17 @@ export function CloneProvider({ children }: { children: ReactNode }) {
           prev
             ? {
                 ...prev,
-                mensajes: [
-                  ...prev.mensajes,
-                  { rol: "usuario", contenido: message },
-                  { rol: "clon", contenido: data.respuesta_clon },
+                messages: [
+                  ...prev.messages,
+                  { role: "user", content: message },
+                  { role: "clone", content: data.clone_response },
                 ],
               }
             : null,
         )
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Error desconocido")
+      setError(err instanceof Error ? err.message : "Unknown error")
     } finally {
       setIsLoading(false)
     }

@@ -1,73 +1,73 @@
 # AlterEgo Chain Frontend
 
-Una aplicación web minimalista para crear y gestionar clones introspectivos de tu conciencia, representados como un grafo interactivo de nodos conectados.
+A minimalist web application for creating and managing introspective clones of your consciousness, represented as an interactive graph of connected nodes.
 
-## 🚀 Instalación y Ejecución
+## 🚀 Installation and Setup
 
-### Prerrequisitos
-- Node.js (versión 16 o superior)
-- npm o yarn
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm or yarn
 
-### Pasos para ejecutar localmente
+### Steps to Run Locally
 
-1. **Clona o descarga el proyecto**
-   \`\`\`bash
+1. **Clone or download the project**
+   ```bash
    cd alterego-chain-frontend
-   \`\`\`
+   ```
 
-2. **Instala las dependencias**
-   \`\`\`bash
+2. **Install dependencies**
+   ```bash
    npm install
-   \`\`\`
+   ```
 
-3. **Inicia el servidor de desarrollo**
-   \`\`\`bash
+3. **Start the development server**
+   ```bash
    npm run dev
-   \`\`\`
+   ```
 
-4. **Abre tu navegador**
-   - Ve a `http://localhost:5173`
-   - La aplicación debería estar funcionando
+4. **Open your browser**
+   - Go to `http://localhost:5173`
+   - The application should be running
 
-### Scripts disponibles
+### Available Scripts
 
-- `npm run dev` - Inicia el servidor de desarrollo
-- `npm run build` - Construye la aplicación para producción
-- `npm run preview` - Previsualiza la build de producción
-- `npm run lint` - Ejecuta el linter
+- `npm run dev` - Starts the development server
+- `npm run build` - Builds the application for production
+- `npm run preview` - Previews the production build
+- `npm run lint` - Runs the linter
 
-## 🔧 Configuración del Backend
+## 🔧 Backend Configuration
 
-Asegúrate de que tu backend de AlterEgo Chain esté ejecutándose en `http://localhost:3001` antes de usar la aplicación.
+Ensure your AlterEgo Chain backend is running on `http://localhost:3001` before using the application.
 
-El frontend espera los siguientes endpoints:
-- `POST /crear-clon0`
-- `POST /continuar-clon0`
-- `POST /bifurcar`
-- `POST /continuar-bifurcado`
+The frontend expects the following endpoints:
+- `POST /create-clone0`
+- `POST /continue-clone0`
+- `POST /fork`
+- `POST /continue-fork`
 
-## 🎨 Características
+## 🎨 Features
 
-- **Interfaz minimalista** con fondo blanco y tipografía limpia
-- **Grafo interactivo** que muestra los clones como nodos conectados
-- **Chat en tiempo real** con cada clon individual
-- **Sistema de bifurcación** hacia Futuro, Universo paralelo o Desconocida
-- **Responsive design** que se adapta a diferentes tamaños de pantalla
+- **Minimalist interface** with a white background and clean typography
+- **Interactive graph** displaying clones as connected nodes
+- **Real-time chat** with each individual clone
+- **Bifurcation system** for Future, Parallel Universe, or Unknown paths
+- **Responsive design** adapting to different screen sizes
 
-## 🛠️ Tecnologías
+## 🛠️ Technologies
 
-- **React 18** con TypeScript
-- **Vite** como bundler y servidor de desarrollo
-- **TailwindCSS** para estilos
-- **react-force-graph-2d** para la visualización del grafo
-- **Lucide React** para iconos
+- **React 18** with TypeScript
+- **Vite** as the bundler and development server
+- **TailwindCSS** for styling
+- **react-force-graph-2d** for graph visualization
+- **Lucide React** for icons
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 
-\`\`\`
+```
 src/
 ├── components/
-│   ├── ui/           # Componentes UI básicos
+│   ├── ui/           # Basic UI components
 │   ├── AlterEgoApp.tsx
 │   ├── ChatPanel.tsx
 │   ├── GraphView.tsx
@@ -78,25 +78,25 @@ src/
 │   └── utils.ts
 ├── index.css
 └── main.tsx
-\`\`\`
+```
 
-## 🔄 Flujo de la Aplicación
+## 🔄 Application Flow
 
-1. **Pantalla inicial**: El usuario describe su personalidad
-2. **Creación del clon base**: Se genera el primer nodo en el grafo
-3. **Interacción**: Click en nodos para abrir conversaciones
-4. **Bifurcación**: Crear nuevas versiones del clon
-5. **Expansión**: El grafo crece como un árbol de conciencia
+1. **Initial screen**: User describes their personality
+2. **Base clone creation**: Generates the first node in the graph
+3. **Interaction**: Click on nodes to open conversations
+4. **Bifurcation**: Create new versions of the clone
+5. **Expansion**: The graph grows as a tree of consciousness
 
-## 🐛 Solución de Problemas
+## 🐛 Troubleshooting
 
-- **Error de conexión**: Verifica que el backend esté ejecutándose en el puerto 3001
-- **Problemas de CORS**: Asegúrate de que el backend tenga configurado CORS para localhost:5173
-- **Dependencias faltantes**: Ejecuta `npm install` nuevamente
+- **Connection error**: Verify the backend is running on port 3001
+- **CORS issues**: Ensure the backend has CORS configured for localhost:5173
+- **Missing dependencies**: Run `npm install` again
 
-## 📝 Notas de Desarrollo
+## 📝 Development Notes
 
-- El proyecto usa **React.StrictMode** para detectar problemas potenciales
-- Las rutas están configuradas con **path aliases** (`@/` apunta a `src/`)
-- El estado global se maneja con **Context API**
-- Todos los componentes están tipados con **TypeScript**
+- The project uses **React.StrictMode** to detect potential issues
+- Routes are configured with **path aliases** (`@/` points to `src/`)
+- Global state is managed with **Context API**
+- All components are typed with **TypeScript**
