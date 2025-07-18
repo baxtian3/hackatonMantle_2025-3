@@ -68,6 +68,8 @@ The smart contracts are live and tested, structured in a modular way:
 
 📂 `blockchain/contracts/Clones.sol`
 
+address: 0xd732833d980c169cd709b3Bc485beD76c21E6A0d
+
 ---
 
 ### 2. `Identity.sol` (Seed SBTs)
@@ -78,6 +80,8 @@ The smart contracts are live and tested, structured in a modular way:
 - Includes `setMinter(address)` and `Ownable`
 
 📂 `blockchain/contracts/Identity.sol`
+
+address: 0xACD2A2A3ed3E249D5371dc9d767e5f0191988eec
 
 ---
 
@@ -92,6 +96,8 @@ The smart contracts are live and tested, structured in a modular way:
   - `setPermissions`
 
 📂 `blockchain/contracts/Factory.sol`
+
+address: 0x0F2a472CB4A72f57ecEd1A7CF0F30Af76192Fdf5
 
 ---
 
